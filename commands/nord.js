@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-    const {nordA} = require("../accounts.json")
+    const {nordAccs} = require('../accounts.json')
 module.exports = {
     name:"gennord",
     description:"generates a nord account",
@@ -7,7 +7,7 @@ module.exports = {
      
             
         
-        const NordHandler = () => nord[Math.floor(Math.random() * nord.length)]
+        const NordHandler = () => nordAccs[Math.floor(Math.random() * nordAccs.length)]
 
         const Embed = new Discord.MessageEmbed()
         .setColor('RANDOM')
@@ -15,6 +15,7 @@ module.exports = {
         .addFields(
             {name:"nord accounts"  , value: NordHandler()},
         )
+        message.channel.send("GENERATED!!! Check DM's")
         message.author.send(Embed)
     }    
 
