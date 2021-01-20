@@ -1,9 +1,11 @@
 const Discord = require('discord.js')
-const {prefix} = require('../config.json')
+const {default_prefix} = require('../config.json')
 module.exports = {
     name:"settings",
     description:"databse",
     async run(message,args){
+        let prefix = db.get(`prefix_${message.guild.id}`)
+        if(prefix === null) prefix = default_prefix
        const embed = new Discord.MessageEmbed()
        .setColor('RANDOM')
        .setTitle("CONFIGURABLE SETTINGS")
