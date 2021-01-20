@@ -1,5 +1,4 @@
 {
-	"prefix": "!" ,
+	"default_prefix": "!",
 	"password":"123"
-	
 }

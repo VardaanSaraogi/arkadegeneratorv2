@@ -19,6 +19,7 @@
     "keyv": "^4.0.3",
     "moment": "^2.29.1",
     "mongoose": "^5.11.8",
+    "parse-ms": "^2.1.0",
     "quick.db": "^7.1.3",
     "random-puppy": "^1.1.0",
     "request": "^2.88.2"
