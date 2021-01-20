@@ -5,8 +5,11 @@ module.exports = {
     name:"work",
     description:"woork",
     async run(message,args){
+        let enabledWork = await db.fetch(`enabledWork_${message.guild.id}`)
+        if(enabledWork === false) return message.channel.send('soz thats disabled')
         let timeoutworked = 3600000
         let worked = await db.fetch(`worked_${message.author.id}`)
+
         if(worked != null && timeoutworked - (Date.now() - worked) > 0 ){
             let time = ms(timeoutworked - (Date.now() - worked));
             message.channel.send(`You have alr worked  dum dum , come back in ${time.hours}h ${time.minutes}m ${time.seconds}s`)

@@ -24,14 +24,14 @@ module.exports = {
             db.subtract(`money_${user.id}` , 700)
         }
     }
-    if(args[0] === xbox.toLowerCase()){
+    if(args[0] === "idiot"){
         console.log(args[0])
     if(author < 700){
         message.channel.send("DUMMY YOU NEED 600 COINS")
     } else{
         let item = db.fetch(user.id , { items: [] })
-        db.push(user.id , "XBOX")
-        message.channel.send("you bough an Xbox  for 600 coins")
+        db.push(user.id , "idiot")
+        message.channel.send("you bough an idiot  for 600 coins")
         db.subtract(`money_${user.id}` , 600)
     }
 }
