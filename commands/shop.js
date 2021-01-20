@@ -3,6 +3,8 @@ module.exports = {
     name:"shop",
     description:"databse",
     async run(message,args){
+        let  enabledBal = await db.fetch(`enabledBal_${message.guild.id}`)
+        if(enabledBal === false) return message.channel.send('soz thats disabled')
         const embed = new Discord.MessageEmbed()
         .setColor('RANDOM')
         .setTitle('Shop For Today')

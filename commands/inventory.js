@@ -6,6 +6,8 @@ module.exports= {
     name:"inventory",
     description:"inventory",
      async run(message , args , client) {
+      let  enabledBal = await db.fetch(`enabledBal_${message.guild.id}`)
+      if(enabledBal === false) return message.channel.send('soz thats disabled')
       let user = message.mentions.users.first() || message.author
         let items = db.get(user.id)
         console.log(items)

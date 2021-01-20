@@ -5,8 +5,15 @@ module.exports = {
     name:"work",
     description:"woork",
     async run(message,args){
+        let  enabledBal = await db.fetch(`enabledBal_${message.guild.id}`)
+        if(enabledBal === false) return message.channel.send('soz thats disabled')
         let enabledWork = await db.fetch(`enabledWork_${message.guild.id}`)
+        let  enabledBal = await db.fetch(`enabledBal_${message.guild.id}`)
+        if(enabledBal === false) return message.channel.send('soz thats disabled')
+     
+
         if(enabledWork === false) return message.channel.send('soz thats disabled')
+        
         let timeoutworked = 3600000
         let worked = await db.fetch(`worked_${message.author.id}`)
 

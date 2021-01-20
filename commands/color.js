@@ -8,6 +8,8 @@ module.exports = {
     name:"color",
     description:"databse",
     async run(message,args){
+        let  enabledBal = await db.fetch(`enabledBal_${message.guild.id}`)
+        if(enabledBal === false) return message.channel.send('soz thats disabled')
         let usablecolor = await db.fetch(`color_${message.guild.id}`)
         if(args[0] === "red"){
 
