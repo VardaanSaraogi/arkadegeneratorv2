@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const {default_prefix} = require('../config.json')
+const db = require('quick.db')
 module.exports = {
     name:"settings",
     description:"databse",
