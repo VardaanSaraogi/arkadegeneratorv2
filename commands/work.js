@@ -8,7 +8,7 @@ module.exports = {
         let  enabledBal = await db.fetch(`enabledBal_${message.guild.id}`)
         if(enabledBal === false) return message.channel.send('soz thats disabled')
         let enabledWork = await db.fetch(`enabledWork_${message.guild.id}`)
-        let  enabledBal = await db.fetch(`enabledBal_${message.guild.id}`)
+        
         if(enabledBal === false) return message.channel.send('soz thats disabled')
      
 
