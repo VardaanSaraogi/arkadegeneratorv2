@@ -24,7 +24,7 @@ module.exports = {
     else if(args[0] === "bal" && args[1] === "yes" && enabledWork === true){
       db.set(`enabledBal_${message.guild.id}` , false)
       console.log(enabledBal)
-      mesage.channel.send("DONE , disabled the economy system")
+      message.channel.send("DONE , disabled the economy system")
     }
 
     }
