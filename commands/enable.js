@@ -5,18 +5,29 @@ module.exports = {
     name:"enable",
     description:"databse",
     async run(message,args){
-      let  enabledBal = await db.fetch(`enabledBal_${message.guild.id}`)
-        if(enabledBal === false) return message.channel.send('soz thats disabled')
         let enabledWork = await db.fetch(`enabledWork_${message.guild.id}`)
-
+        let  enabledBal = await db.fetch(`enabledBal_${message.guild.id}`)
         if (args[0] === "work" && enabledWork === true){
           message.channel.send('Thats alr enabled , how tf do u plan to enable something thats alr enabled')
         }
-      else if(args[0] === "work" && enabledWork === false){
+     else  if(args[0] === "work" && enabledWork === false){
         db.set(`enabledWork_${message.guild.id}` , true)
         console.log(enabledWork)
-        message.channel.send("work has been `enabled`")
+        message.channel.send("work has been `disabled`")
       }
-    
+      else if (args[0] === "bal" && enabledWork ===  true){
+        message.channel.send('Thats alr enabled , how tf do u plan to enable something thats alr enabled')
+      }
+    else if(args[0] === "bal" && enabledWork === false && args[1] !== "yes" ){
+      message.channel.send("doing this will re enable  the entire economy system , are you sure you want to do this? , type prefix + enable bal yes to confirm")
+    }
+    else if(args[0] === "bal" && args[1] === "yes" && enabledWork === false){
+      db.set(`enabledBal_${message.guild.id}` , true)
+      console.log(enabledBal)
+      message.channel.send("DONE , enabled the economy system")
+    }
+    if (args[0] === "bal" && enabledBal === false){
+      message.channel.send('Thats alr enabled, how tf do u plan to enable something thats alr disabled')
+    }
     }
 }
