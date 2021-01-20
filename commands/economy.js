@@ -4,6 +4,8 @@ module.exports = {
     name:"economy",
     description:"databse",
     async run(message,args){
+        let prefix = db.get(`prefix_${message.guild.id}`)
+        if(prefix === null) prefix = default_prefix
        const embed = new Discord.MessageEmbed()
        .setColor('RANDOM')
        .setTitle("CONFIGURABLE SETTINGS")
