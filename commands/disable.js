@@ -18,7 +18,7 @@ module.exports = {
       else if (args[0] === "bal" && enabledWork === false){
         message.channel.send('Thats alr disabled , how tf do u plan to disable something thats alr disabled')
       }
-    else if(args[0] === "bal" && enabledWork === true){
+    else if(args[0] === "bal" && enabledWork === true && args[1] !== "yes" ){
       message.channel.send("doing this will disable the entire economy system , are you sure you want to do this? , type prefix + disable bal yes to confirm")
     }
     else if(args[0] === "bal" && args[1] === "yes" && enabledWork === true){
