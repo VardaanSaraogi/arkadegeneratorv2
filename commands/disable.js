@@ -26,6 +26,8 @@ module.exports = {
       console.log(enabledBal)
       message.channel.send("DONE , disabled the economy system")
     }
-
+    if (args[0] === "bal" && enabledBal === false){
+      message.channel.send('Thats alr disabled , how tf do u plan to disable something thats alr disabled')
+    }
     }
 }
