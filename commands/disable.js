@@ -19,7 +19,7 @@ module.exports = {
         message.channel.send('Thats alr disabled , how tf do u plan to disable something thats alr disabled')
       }
     else if(args[0] === "bal" && enabledWork === true){
-      mesage.channel.send("doing this will disable the entire economy system , are you sure you want to do this? , type prefix + disable bal yes to confirm")
+      message.channel.send("doing this will disable the entire economy system , are you sure you want to do this? , type prefix + disable bal yes to confirm")
     }
     else if(args[0] === "bal" && args[1] === "yes" && enabledWork === true){
       db.set(`enabledBal_${message.guild.id}` , false)
