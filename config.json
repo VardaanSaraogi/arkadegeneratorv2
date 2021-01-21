@@ -2,6 +2,7 @@
 	"default_prefix": "!",
 	"password":"123",
 	"red":"#ff0000",
-	"color":"",
-	"usablecolor":""
+	"color":"#ff0000",
+	"usablecolor":"",
+	"default_Enabled" : true
 }

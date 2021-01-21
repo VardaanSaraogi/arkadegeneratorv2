@@ -14,6 +14,14 @@ module.exports = {
        .setThumbnail(message.author.displayAvatarURL())
        .addFields(
            {name:"Configure Work ON/OFF" , value: "Usage: " + prefix + "DISABLE/ENABLE work"},
+           {name:"Configure Daily Money  ON/OFF" , value: "Usage: " + prefix + "DISABLE/ENABLE daily"},
+           {name:"Configure Weekly Money  ON/OFF" , value: "Usage: " + prefix + "DISABLE/ENABLE weekly"},
+           {name:"Configure Monthly Money  ON/OFF" , value: "Usage: " + prefix + "DISABLE/ENABLE monthly"},
+           {name:"Configure Rob  ON/OFF" , value: "Usage: " + prefix + "DISABLE/ENABLE rob"},
+           {name:"Configure Economy  ON/OFF" , value: "Usage: " + prefix + "DISABLE/ENABLE economy"},
+
+
+
            {name:"Configure Economy System" , value: prefix + "disable economy"}
        )
        message.channel.send(embed)

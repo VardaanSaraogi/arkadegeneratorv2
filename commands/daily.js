@@ -7,8 +7,10 @@ module.exports= {
     name:"daily",
     description:"daily money ",
 async run(message,args){
-    let  enabledBal = await db.fetch(`enabledBal_${message.guild.id}`)
-        if(enabledBal === false) return message.channel.send('soz thats disabled')
+    let  ecoenabled = db.get(`ecoenabled_${message.guild.id}`)
+    if(ecoenabled===false) return message.channel.send("soz thats disabled")
+    let   DailyEnabled = db.get(`dailyenabled_${message.guild.id}`)
+    if(DailyEnabled === false)return message.channel.send("Soz thats disabled")
     let daily = await db.fetch(`daily_${message.author.id}`)
 
 if(daily != null && timeout - (Date.now() - daily) > 0 ){

@@ -6,13 +6,11 @@ module.exports= {
     name:"inventory",
     description:"inventory",
      async run(message , args , client) {
-      let  enabledBal = await db.fetch(`enabledBal_${message.guild.id}`)
-      if(enabledBal === false) return message.channel.send('soz thats disabled')
-      console.log(enabledBal)
+      let  ecoenabled = db.get(`ecoenabled_${message.guild.id}`)
+      if(ecoenabled===false) return message.channel.send("soz thats disabled")
       let user = message.mentions.users.first() || message.author
         let items = db.get(user.id)
         console.log(items)
-        console.log(enabledBal)
         let usablecolor = await db.fetch(`color_${message.guild.id}`)
         color = usablecolor
         if( items === null)  items = `${user} has nothing`

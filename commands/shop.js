@@ -4,6 +4,8 @@ module.exports = {
     name:"shop",
     description:"databse",
     async run(message,args){
+        let  ecoenabled = db.get(`ecoenabled_${message.guild.id}`)
+        if(ecoenabled===false) return message.channel.send("soz thats disabled")
         let  enabledBal = await db.fetch(`enabledBal_${message.guild.id}`)
         if(enabledBal === false) return message.channel.send('soz thats disabled')
         const embed = new Discord.MessageEmbed()

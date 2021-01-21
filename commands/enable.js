@@ -1,34 +1,58 @@
 const Discord = require('discord.js')
+const {default_Enabled} = require('../config.json')
 var enableStatus;
 const db = require('quick.db')
-const {default_prefix} = require('../config.json')
+var economy = "economy"
+var work = "work"
 module.exports = {
     name:"enable",
     description:"databse",
     async run(message,args){
-        let enabledWork = await db.fetch(`enabledWork_${message.guild.id}`)
-        let  enabledBal = await db.fetch(`enabledBal_${message.guild.id}`)
-        if (args[0] === "work" && enabledWork === true){
-          message.channel.send('Thats alr enabled , how tf do u plan to enable something thats alr enabled')
+      if (!message.member.hasPermission(['ADMINISTRATOR'])) return message.channel.send('soz but you dont have perms')
+
+      let  workEnabled = db.get(`workenabled_${message.guild.id}`)
+      let   DailyEnabled = db.get(`dailyenabled_${message.guild.id}`)
+      let   monthlyenabled = db.get(`monthlyenabled_${message.guild.id}`)
+      let  robenabled = db.get(`robenabled_${message.guild.id}`)
+      let  ecoenabled = db.get(`ecoenabled_${message.guild.id}`)
+      
+     if(workEnabled === null) workEnabled = default_Enabled
+     if(!args[0]) return message.channel.send("lmaooo no argssss")
+      if(args[0].toLowerCase() === "work" && workEnabled === true){
+        message.channel.send("OOF bruv , u cant enable something thats alr enabled")
+     }
+     else if(args[0].toLowerCase() === "work" && workEnabled === false){
+       message.channel.send('DONE')
+       db.set(`workenabled_${message.guild.id}` , true)
+     }
+     else if(args[0].toLowerCase() === "daily" && DailyEnabled === true) {
+      message.channel.send("OOF bruv , u cant enable something thats alr enabled")
+     }
+      else if(args[0].toLowerCase() === "daily" && DailyEnabled === false){
+        message.channel.send('DONE')
+        db.set(`dailyenabled_${message.guild.id}` , true)
+      }
+      else if(args[0].toLowerCase() === "monthly" && monthlyenabled === true) {
+        message.channel.send("OOF bruv , u cant enable something thats alr enabled")
+       }
+        else if(args[0].toLowerCase() === "monthly" && monthlyenabled === false){
+          message.channel.send('DONE')
+          db.set(`monthlyenabled_${message.guild.id}` , true)
         }
-     else  if(args[0] === "work" && enabledWork === false){
-        db.set(`enabledWork_${message.guild.id}` , true)
-        console.log(enabledWork)
-        message.channel.send("work has been `enabled`")
-      }
-      else if (args[0] === "economy" && enabledWork ===  true){
-        message.channel.send('Thats alr enabled , how tf do u plan to enable something thats alr enabled')
-      }
-    else if(args[0] === "economy" && enabledWork === false && args[1] !== "yes" ){
-      message.channel.send("doing this will re enable  the entire economy system , are you sure you want to do this? , type prefix + enable bal yes to confirm")
-    }
-    else if(args[0] === "economy" && args[1] === "yes" && enabledWork === false){
-      db.set(`enabledBal_${message.guild.id}` , true)
-      console.log(enabledBal)
-      message.channel.send("DONE , enabled the economy system")
-    }
-    if (args[0] === "economy" && enabledBal === false){
-      message.channel.send('Thats alr enabled, how tf do u plan to enable something thats alr disabled')
-    }
+        else if(args[0].toLowerCase() === "rob" && robenabled === true) {
+          message.channel.send("OOF bruv , u cant enable something thats alr enabled")
+         }
+          else if(args[0].toLowerCase() === "rob" && robenabled === false){
+            message.channel.send('DONE')
+            db.set(`robenabled_${message.guild.id}` , true)
+          }
+          else if(args[0].toLowerCase() === "economy" && ecoenabled === true) {
+            message.channel.send("OOF bruv , u cant enable something thats alr enabled")
+           }
+           else if(args[0].toLowerCase() === "economy" && ecoenabled === false){
+            message.channel.send('DONE')
+            db.set(`ecoedenabled_${message.guild.id}` , true)
+          }
+
     }
 }

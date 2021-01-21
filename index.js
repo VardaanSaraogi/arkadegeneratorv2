@@ -1,6 +1,6 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const {default_prefix}  = require('./config.json');
+const {default_prefix , default_Enabled}  = require('./config.json');
 require('dotenv').config()
 const db = require('quick.db')
 const client = new Discord.Client();

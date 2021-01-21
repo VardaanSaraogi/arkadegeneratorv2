@@ -1,36 +1,41 @@
-const db = require('quick.db');
-const ms = require('parse-ms')
-const Discord = require('discord.js');
-module.exports = {
+const db = require('quick.db')
+const Discord = require('discord.js')
+const ms = require("parse-ms");
+
+module.exports={
     name:"work",
-    description:"woork",
-    async run(message,args){
-        let  enabledBal = await db.fetch(`enabledBal_${message.guild.id}`)
-        if(enabledBal === false) return message.channel.send('soz thats disabled')
-        let enabledWork = await db.fetch(`enabledWork_${message.guild.id}`)
-        
-        if(enabledBal === false) return message.channel.send('soz thats disabled')
-     
+    description:"wooork",
+    async run(message , args , client){
+      let  ecoenabled = db.get(`ecoenabled_${message.guild.id}`)
+      if(ecoenabled===false) return message.channel.send("soz thats disabled")
+      let  workEnabled = db.get(`workenabled_${message.guild.id}`)
 
-        if(enabledWork === false) return message.channel.send('soz thats disabled')
-        
-        let timeoutworked = 3600000
-        let worked = await db.fetch(`worked_${message.author.id}`)
+      if(workEnabled === false) return message.channel.send('soz thats disabled')
+    let user = message.author;
+    let author = await db.fetch(`work_${message.guild.id}_${user.id}`)
 
-        if(worked != null && timeoutworked - (Date.now() - worked) > 0 ){
-            let time = ms(timeoutworked - (Date.now() - worked));
-            message.channel.send(`You have alr worked  dum dum , come back in ${time.hours}h ${time.minutes}m ${time.seconds}s`)
+    let timeout = 600000;
+    
+    if (author !== null && timeout - (Date.now() - author) > 0) {
+        let time = ms(timeout - (Date.now() - author));
+    
+        let timeEmbed = new Discord.MessageEmbed()
+        .setColor("#FFFFFF")
+        .setDescription(`❌ You have already worked recently\n\nTry again in ${time.minutes}m ${time.seconds}s `);
+        message.channel.send(timeEmbed)
+      } else {
+
+        let replies = ['Programmer','Builder','Waiter','Busboy','Chief','Mechanic']
+
+        let result = Math.floor((Math.random() * replies.length));
+        let amount = Math.floor(Math.random() * 80) + 1;
+        let embed1 = new Discord.MessageEmbed()
+        .setColor("#FFFFFF")
+        .setDescription(`✅ You worked as a ${replies[result]} and earned ${amount} coins`);
+        message.channel.send(embed1)
         
-        }else{
-            let amountearned = Math.floor(Math.random() * 500) +1
-            let jobs =["Youtuber" , "Chef" , "PoliceMan", "MrBeast's Friend" ]
-            let jobHandler =jobs[ Math.floor(Math.random() * jobs.length)]
-            let embed = new Discord.MessageEmbed()
-            .setAuthor(`${message.author.tag} , it payed off` , message.author.displayAvatarURL())
-            .setDescription(`You worked as a ${jobHandler} and earnt ${amountearned}`)
-            message.channel.send(embed)
-            db.add(`money_${message.author.id}` , amountearned)
-            db.set(`worked_${message.author.id}` , Date.now())
-        }
-    }
+        db.add(`money_${message.guild.id}_${user.id}`, amount)
+        db.set(`work_${message.guild.id}_${user.id}`, Date.now())
+    };
+}
 }

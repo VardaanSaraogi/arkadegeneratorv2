@@ -6,8 +6,8 @@ module.exports = {
     name:"buy",
     description:"buyyy",
     async run(message,args){
-        let  enabledBal = await db.fetch(`enabledBal_${message.guild.id}`)
-        if(enabledBal === false) return message.channel.send('soz thats disabled')
+        let  ecoenabled = db.get(`ecoenabled_${message.guild.id}`)
+        if(ecoenabled===false) return message.channel.send("soz thats disabled")
         let user = message.author
         let author = db.fetch(`money_${message.author.id}`)
         console.log(author)
