@@ -17,18 +17,18 @@ module.exports = {
         console.log(enabledWork)
         message.channel.send("work has been `disabled`")
       }
-      else if (args[0].toLowerCase() === economy && enabledWork === false){
+      else if (args[0] === economy && enabledWork === false){
         message.channel.send('Thats alr disabled , how tf do u plan to disable something thats alr disabled')
       }
-    else if(args[0].toLowerCase() === economy && enabledWork === true && args[1].toLowerCase() !== "yes" ){
+    else if(args[0]=== economy && enabledWork === true && args[1].toLowerCase() !== "yes" ){
       message.channel.send("doing this will disable the entire economy system , are you sure you want to do this? , type prefix + disable bal yes to confirm")
     }
-    else if(args[0].toLowerCase() === economy && args[1].toLowerCase() === "yes" && enabledWork === true){
+    else if(args[0] === economy && args[1].toLowerCase() === "yes" && enabledWork === true){
       db.set(`enabledBal_${message.guild.id}` , false)
       console.log(enabledBal)
       message.channel.send("DONE , disabled the economy system")
     }
-    else if (args[0].toLowerCase() === economy && enabledBal === false){
+    else if (args[0] === economy && enabledBal === false){
       message.channel.send('Thats alr disabled , how tf do u plan to disable something thats alr disabled')
     }
     }
