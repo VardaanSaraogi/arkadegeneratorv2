@@ -11,6 +11,7 @@ module.exports= {
       let user = message.mentions.users.first() || message.author
         let items = db.get(user.id)
         console.log(items)
+        console.log(enabledBal)
         let usablecolor = await db.fetch(`color_${message.guild.id}`)
         color = usablecolor
         if( items === null)  items = `${user} has nothing`
