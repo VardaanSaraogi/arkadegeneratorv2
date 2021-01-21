@@ -14,7 +14,7 @@ module.exports = {
        .setThumbnail(message.author.displayAvatarURL())
        .addFields(
            {name:"Configure Work ON/OFF" , value: "Usage: " + prefix + "DISABLE/ENABLE work"},
-           {name:"Configure Economy System" , value: prefix + "disable bal"}
+           {name:"Configure Economy System" , value: prefix + "disable economy"}
        )
        message.channel.send(embed)
     }
