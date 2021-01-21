@@ -19,10 +19,10 @@ module.exports = {
       else if (args[0].toLowerCase() === "economy" && enabledWork === false){
         message.channel.send('Thats alr disabled , how tf do u plan to disable something thats alr disabled')
       }
-    else if(args[0].toLowerCase() === "economy" && enabledWork === true && args[1] !== "yes" ){
+    else if(args[0].toLowerCase() === "economy" && enabledWork === true && args[1].toLowerCase() !== "yes" ){
       message.channel.send("doing this will disable the entire economy system , are you sure you want to do this? , type prefix + disable bal yes to confirm")
     }
-    else if(args[0].toLowerCase() === "economy" && args[1] === "yes" && enabledWork === true){
+    else if(args[0].toLowerCase() === "economy" && args[1].toLowerCase() === "yes" && enabledWork === true){
       db.set(`enabledBal_${message.guild.id}` , false)
       console.log(enabledBal)
       message.channel.send("DONE , disabled the economy system")
